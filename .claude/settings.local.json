@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__Claude_Preview__preview_start",
+      "Read(//Users/ayushc/.nvm/versions/**)",
+      "Read(//Users/ayushc/.volta/**)",
+      "Read(//usr/local/**)",
+      "Read(//opt/homebrew/bin/**)",
+      "Read(//Users/ayushc/**)",
+      "Bash(/opt/homebrew/bin/npm install:*)",
+      "WebFetch(domain:www.linkedin.com)",
+      "Bash(curl -sL -o /Users/ayushc/work/portfolio/public/logos/umd.png \"https://upload.wikimedia.org/wikipedia/en/thumb/3/3e/University_of_Maryland_seal.svg/250px-University_of_Maryland_seal.svg.png\" -A \"Mozilla/5.0 \\(Macintosh; Intel Mac OS X 10_15_7\\) AppleWebKit/537.36\")",
+      "Bash(curl -sL -o /Users/ayushc/work/portfolio/public/logos/habiterre.webp \"https://cdn.prod.website-files.com/6943091ec130e99b9e948ee2/6943ca260cd73ab8ea3a6f7a_logo-icon.webp\")",
+      "Bash(curl -sL -o /Users/ayushc/work/portfolio/public/logos/dartmouth.jpg \"https://gdusa.com/wp-content/uploads/2018/02/dartmouthhead.jpg\" -A \"Mozilla/5.0\")",
+      "Bash(curl -sL -o /Users/ayushc/work/portfolio/public/logos/dartmouth.png \"https://www.pngfind.com/pngs/m/337-3379340_dartmouth-college-dartmouth-university-logo-hd-png-download.png\" -A \"Mozilla/5.0\")",
+      "Bash(/opt/homebrew/bin/node -e ':*)",
+      "Bash(python3 -c \"from PIL import Image; print\\('PIL available'\\)\")",
+      "Bash(pip3 install:*)"
+    ]
+  }
+}

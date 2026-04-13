@@ -1,0 +1,337 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500&family=DM+Serif+Display:ital@0;1&display=swap');
+*{box-sizing:border-box;margin:0;padding:0;}
+.pf{
+  --bg:#f5f2eb;--surface:#edeae1;--surface2:#e3e0d6;
+  --border:#ccc8be;--text:#0f0f0f;--muted:#6b6560;--dim:#9a9590;
+  --ag:#1a7f37;--ab:#0969da;--ap:#6e40c9;--aa:#9a6700;--ar:#c0392b;
+  --gc:rgba(0,0,0,0.08);--tc:#9a9590;
+  font-family:'JetBrains Mono',monospace;background:var(--bg);color:var(--text);transition:background .25s,color .25s;
+}
+.pf.dark{
+  --bg:#0d1117;--surface:#161b22;--surface2:#21262d;
+  --border:#30363d;--text:#e6edf3;--muted:#7d8590;--dim:#484f58;
+  --ag:#39d353;--ab:#58a6ff;--ap:#bc8cff;--aa:#d29922;--ar:#ff7b72;
+  --gc:rgba(255,255,255,0.07);--tc:#484f58;
+}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:.9rem 2rem;border-bottom:1px solid var(--border);background:var(--surface);transition:background .25s;}
+.nav-brand{font-size:13px;font-weight:500;color:var(--ag);letter-spacing:.05em;}
+.sdot{width:7px;height:7px;border-radius:50%;background:var(--ag);display:inline-block;margin-right:6px;}
+.nav-right{display:flex;gap:1.25rem;align-items:center;}
+.nav-right a{font-size:11px;color:var(--muted);text-decoration:none;letter-spacing:.08em;text-transform:uppercase;}
+.ttoggle{display:flex;align-items:center;gap:6px;cursor:pointer;border:1px solid var(--border);padding:5px 10px;background:transparent;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);}
+.ttrack{width:28px;height:15px;border-radius:8px;background:var(--surface2);border:1px solid var(--border);position:relative;}
+.tthumb{width:9px;height:9px;border-radius:50%;background:var(--muted);position:absolute;top:2px;left:2px;transition:left .2s,background .2s;}
+.pf.dark .tthumb{left:15px;background:var(--ab);}
+.hero{display:grid;grid-template-columns:1fr 1fr;min-height:80vh;border-bottom:1px solid var(--border);}
+.hero-l{padding:3.5rem 2rem;display:flex;flex-direction:column;justify-content:center;border-right:1px solid var(--border);}
+.hlabel{font-size:11px;color:var(--ag);letter-spacing:.15em;text-transform:uppercase;margin-bottom:1.25rem;}
+.hname{font-family:'DM Serif Display',serif;font-size:clamp(2.4rem,5vw,4.2rem);font-weight:400;line-height:1.05;color:var(--text);margin-bottom:.6rem;}
+.hname span{color:var(--ab);}
+.hsub{font-size:11.5px;color:var(--muted);line-height:2;margin-bottom:2rem;max-width:44ch;}
+.hlinks{display:flex;gap:.75rem;flex-wrap:wrap;}
+.btn{font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:7px 14px;border:1px solid var(--border);color:var(--muted);text-decoration:none;cursor:pointer;background:transparent;font-family:'JetBrains Mono',monospace;transition:border-color .2s,color .2s;}
+.btn:hover{border-color:var(--ab);color:var(--ab);}
+.btn.p{border-color:var(--ag);color:var(--ag);}
+.hero-r{padding:2.5rem 2rem;display:flex;flex-direction:column;gap:1.25rem;justify-content:center;}
+.cb{background:var(--surface);border:1px solid var(--border);border-radius:6px;overflow:hidden;}
+.ctop{background:var(--surface2);padding:7px 12px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);}
+.cfn{font-size:11px;color:var(--muted);}
+.cdots{display:flex;gap:5px;}
+.cdot{width:9px;height:9px;border-radius:50%;}
+.cbody{padding:1rem 1.25rem;font-size:11.5px;line-height:2;}
+.kw{color:var(--ap);}.fn{color:var(--ab);}.st{color:var(--ar);}.cm{color:var(--dim);}.nm{color:var(--aa);}.op{color:var(--muted);}
+.sb{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:1rem 1.25rem;}
+.sh{font-size:10px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.75rem;}
+.sr{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
+.sn{font-size:11px;color:var(--text);min-width:90px;}
+.sbg{flex:1;height:3px;background:var(--surface2);border-radius:2px;overflow:hidden;}
+.sbar{height:100%;border-radius:2px;}
+.sp{font-size:10px;color:var(--dim);min-width:28px;text-align:right;}
+.ss{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--border);}
+.sc{padding:1.5rem 2rem;border-right:1px solid var(--border);}
+.sc:last-child{border-right:none;}
+.snum{font-family:'DM Serif Display',serif;font-size:2.2rem;color:var(--text);}
+.snum span{color:var(--ag);}
+.slbl{font-size:10px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-top:4px;}
+.sl{display:flex;align-items:center;gap:1rem;padding:1rem 2rem;border-bottom:1px solid var(--border);}
+.sln{font-size:10px;color:var(--dim);}
+.slt{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);}
+.slhr{flex:1;height:1px;background:var(--border);}
+.pg{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--border);}
+.pc{padding:2rem;border-right:1px solid var(--border);border-bottom:1px solid var(--border);cursor:pointer;transition:background .15s;}
+.pc:nth-child(even){border-right:none;}
+.pc:nth-child(3),.pc:nth-child(4){border-bottom:none;}
+.pc:hover{background:var(--surface);}
+.pt{font-size:10px;color:var(--ag);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.6rem;}
+.ptitle{font-family:'DM Serif Display',serif;font-size:1.25rem;color:var(--text);margin-bottom:.5rem;line-height:1.3;}
+.pdesc{font-size:11px;color:var(--muted);line-height:1.9;margin-bottom:1rem;}
+.tags{display:flex;flex-wrap:wrap;gap:6px;}
+.tag{font-size:10px;padding:2px 8px;border:1px solid var(--border);color:var(--dim);letter-spacing:.05em;}
+.cs{display:grid;grid-template-columns:2fr 1fr;border-bottom:1px solid var(--border);}
+.cp{padding:2rem;border-right:1px solid var(--border);}
+.ctitle{font-size:11px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.25rem;}
+.rp{padding:2rem;}
+
+/* EXPERIENCE */
+.exprow{display:grid;grid-template-columns:200px 1fr;border-bottom:1px solid var(--border);}
+.exprow:last-child{border-bottom:none;}
+.expleft{padding:1.5rem 2rem;border-right:1px solid var(--border);display:flex;flex-direction:column;gap:.75rem;align-items:flex-start;}
+.expdate{font-size:11px;color:var(--dim);}
+.logobox{width:52px;height:52px;border-radius:6px;border:1px solid var(--border);background:var(--surface);display:flex;align-items:center;justify-content:center;overflow:hidden;padding:6px;}
+.logobox img{width:100%;height:100%;object-fit:contain;display:block;}
+.expbody{padding:1.5rem 2rem;}
+.exprole{font-size:13px;color:var(--text);font-weight:500;margin-bottom:2px;}
+.exporg{font-size:11px;color:var(--ab);margin-bottom:.5rem;}
+.expdet{font-size:11px;color:var(--muted);line-height:1.8;}
+
+/* EDUCATION */
+.edugrid{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--border);}
+.educard{padding:2rem;border-right:1px solid var(--border);display:flex;flex-direction:column;gap:1rem;}
+.educard:last-child{border-right:none;}
+.edutop{display:flex;align-items:center;gap:14px;}
+.edulbox{width:56px;height:56px;border-radius:8px;border:1px solid var(--border);background:var(--surface);display:flex;align-items:center;justify-content:center;overflow:hidden;padding:7px;flex-shrink:0;}
+.edulbox img{width:100%;height:100%;object-fit:contain;display:block;}
+.pf.dark .edulbox{background:#fff;padding:6px;}
+.pf.dark .logobox{background:#fff;padding:5px;}
+.eduschool{font-family:'DM Serif Display',serif;font-size:1.1rem;color:var(--text);line-height:1.2;}
+.eduloc{font-size:10px;color:var(--muted);margin-top:2px;}
+.edudeg{font-size:11px;color:var(--ap);letter-spacing:.04em;font-weight:500;}
+.edufield{font-size:11px;color:var(--muted);margin-top:2px;line-height:1.6;}
+
+.footer{padding:1.5rem 2rem;display:flex;justify-content:space-between;align-items:center;background:var(--surface);border-top:1px solid var(--border);}
+.footer-l{font-size:11px;color:var(--dim);}
+.footer-r{display:flex;gap:1.5rem;}
+.footer-r a{font-size:11px;color:var(--muted);text-decoration:none;letter-spacing:.08em;}
+.footer-r a:hover{color:var(--ag);}
+@media(max-width:680px){
+  .hero,.pg,.cs,.edugrid{grid-template-columns:1fr;}
+  .hero-l{border-right:none;border-bottom:1px solid var(--border);}
+  .pc,.cp,.educard{border-right:none;}
+  .ss{grid-template-columns:1fr 1fr;}
+  .exprow{grid-template-columns:1fr;}
+  .expleft{border-right:none;border-bottom:1px solid var(--border);flex-direction:row;align-items:center;}
+}
+</style>
+
+<div class="pf" id="pf">
+<nav class="nav">
+  <span class="nav-brand"><span class="sdot"></span>ayush.chakraborty</span>
+  <div class="nav-right">
+    <a href="#">work</a><a href="#">research</a><a href="#">about</a>
+    <button class="ttoggle" onclick="toggleTheme()">
+      <div class="ttrack"><div class="tthumb"></div></div>
+      <span id="tlbl">dark</span>
+    </button>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-l">
+    <p class="hlabel">data engineer · data scientist · bellevue, wa</p>
+    <h1 class="hname">I turn messy<br>data into<br><span>clear signal.</span></h1>
+    <p class="hsub">MS Quantitative Biomedical Sciences · Dartmouth<br>BS Computer Science · University of Maryland<br>Building production ML systems, Bayesian models,<br>and pipelines that actually ship.</p>
+    <div class="hlinks">
+      <a class="btn p" onclick="sendPrompt('Generate a full downloadable HTML file of this portfolio')">download .html ↗</a>
+      <a class="btn" href="#">github</a>
+      <a class="btn" href="#">linkedin</a>
+      <a class="btn" href="#">resume</a>
+    </div>
+  </div>
+  <div class="hero-r">
+    <div class="cb">
+      <div class="ctop">
+        <span class="cfn">ayush_profile.py</span>
+        <div class="cdots">
+          <div class="cdot" style="background:#ff5f57"></div>
+          <div class="cdot" style="background:#ffbd2e"></div>
+          <div class="cdot" style="background:#28c840"></div>
+        </div>
+      </div>
+      <div class="cbody">
+        <div><span class="kw">class</span> <span class="fn">DataScientist</span><span class="op">:</span></div>
+        <div>&nbsp;&nbsp;<span class="kw">def</span> <span class="fn">__init__</span><span class="op">(</span><span class="nm">self</span><span class="op">):</span></div>
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="nm">self</span><span class="op">.</span>name <span class="op">=</span> <span class="st">"Ayush Chakraborty"</span></div>
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="nm">self</span><span class="op">.</span>stack <span class="op">=</span> <span class="op">[</span><span class="st">"Python"</span><span class="op">,</span><span class="st">"FastAPI"</span><span class="op">,</span><span class="st">"AWS"</span><span class="op">]</span></div>
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="nm">self</span><span class="op">.</span>focus <span class="op">=</span> <span class="op">[</span><span class="st">"ML"</span><span class="op">,</span><span class="st">"Bayes"</span><span class="op">,</span><span class="st">"health-tech"</span><span class="op">]</span></div>
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="nm">self</span><span class="op">.</span>next_move <span class="op">=</span> <span class="st">"DS role → PhD"</span></div>
+        <div>&nbsp;</div>
+        <div>&nbsp;&nbsp;<span class="kw">def</span> <span class="fn">value_prop</span><span class="op">(</span><span class="nm">self</span><span class="op">):</span></div>
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="cm"># eng precision + science depth</span></div>
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span> <span class="nm">self</span><span class="op">.</span>stack <span class="op">+</span> <span class="nm">self</span><span class="op">.</span>focus</div>
+      </div>
+    </div>
+    <div class="sb">
+      <p class="sh">proficiency index</p>
+      <div class="sr"><span class="sn">Python / ML</span><div class="sbg"><div class="sbar" style="width:95%;background:var(--ag);"></div></div><span class="sp">95%</span></div>
+      <div class="sr"><span class="sn">SQL / DBs</span><div class="sbg"><div class="sbar" style="width:90%;background:var(--ag);"></div></div><span class="sp">90%</span></div>
+      <div class="sr"><span class="sn">React / TS</span><div class="sbg"><div class="sbar" style="width:80%;background:var(--ab);"></div></div><span class="sp">80%</span></div>
+      <div class="sr"><span class="sn">Bayesian stats</span><div class="sbg"><div class="sbar" style="width:82%;background:var(--ap);"></div></div><span class="sp">82%</span></div>
+      <div class="sr"><span class="sn">AWS infra</span><div class="sbg"><div class="sbar" style="width:75%;background:var(--ab);"></div></div><span class="sp">75%</span></div>
+      <div class="sr"><span class="sn">Causal inf.</span><div class="sbg"><div class="sbar" style="width:70%;background:var(--ap);"></div></div><span class="sp">70%</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="ss">
+  <div class="sc"><div class="snum">3<span>+</span></div><div class="slbl">yrs production eng</div></div>
+  <div class="sc"><div class="snum">2</div><div class="slbl">graduate degrees</div></div>
+  <div class="sc"><div class="snum">4<span>+</span></div><div class="slbl">shipped platforms</div></div>
+  <div class="sc"><div class="snum">∞</div><div class="slbl">questions asked</div></div>
+</div>
+
+<div class="sl"><span class="sln">01</span><span class="slt">selected work</span><div class="slhr"></div></div>
+<div class="pg">
+  <div class="pc">
+    <p class="pt">data platform · agri-tech</p>
+    <h3 class="ptitle">QA/QC Ecosys Platform</h3>
+    <p class="pdesc">Production quality assurance system for field-level carbon data. React/TypeScript frontend, FastAPI backend, batch deletion pipelines across subfield hierarchies with AWS S3.</p>
+    <div class="tags"><span class="tag">FastAPI</span><span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">AWS S3</span><span class="tag">SQLAlchemy</span></div>
+  </div>
+  <div class="pc">
+    <p class="pt">health data science · modeling</p>
+    <h3 class="ptitle">Malaria Transmission Model</h3>
+    <p class="pdesc">Bayesian inference on malaria intervention efficacy for global health policy evaluation. Quantitative modeling designed for decision-making at scale.</p>
+    <div class="tags"><span class="tag">Python</span><span class="tag">Stan</span><span class="tag">Bayesian</span><span class="tag">Epi modeling</span></div>
+  </div>
+  <div class="pc">
+    <p class="pt">ml · explainability</p>
+    <h3 class="ptitle">Modular ML Pipeline</h3>
+    <p class="pdesc">Automated feature selection, cross-validation, and SHAP-based explainability. Generalizes across health and financial datasets with MLflow tracking.</p>
+    <div class="tags"><span class="tag">Scikit-learn</span><span class="tag">SHAP</span><span class="tag">MLflow</span><span class="tag">pandas</span></div>
+  </div>
+  <div class="pc">
+    <p class="pt">data engineering · infra</p>
+    <h3 class="ptitle">AWS Pipeline Automation</h3>
+    <p class="pdesc">SNS/Chatbot alert system with S3 geospatial data management for large-scale agricultural pipelines. Reduced failure response time by 60%.</p>
+    <div class="tags"><span class="tag">AWS SNS</span><span class="tag">Lambda</span><span class="tag">S3</span><span class="tag">Python</span></div>
+  </div>
+</div>
+
+<div class="sl"><span class="sln">02</span><span class="slt">skill distribution</span><div class="slhr"></div></div>
+<div class="cs">
+  <div class="cp">
+    <p class="ctitle">hours by domain (est. 3yr)</p>
+    <div style="position:relative;width:100%;height:220px;">
+      <canvas id="barChart" role="img" aria-label="Bar chart of hours by domain over 3 years.">data eng 2200h, ML 1600h, backend 1400h, stats 1100h, frontend 800h, cloud 700h.</canvas>
+    </div>
+  </div>
+  <div class="rp">
+    <p class="ctitle">domain coverage</p>
+    <div style="position:relative;width:100%;height:220px;">
+      <canvas id="radarChart" role="img" aria-label="Radar chart of domain coverage.">Scores out of 10.</canvas>
+    </div>
+  </div>
+</div>
+
+<div class="sl"><span class="sln">03</span><span class="slt">experience</span><div class="slhr"></div></div>
+<div>
+  <div class="exprow">
+    <div class="expleft">
+      <p class="expdate">Oct 2022 – present</p>
+      <div class="logobox">
+        <img
+          src="https://cdn.prod.website-files.com/6943091ec130e99b9e948ee2/6943eef6c4244741cfae0e26_logo-full-153-2x.webp"
+          alt="HabiTerre"
+          onerror="this.parentNode.innerHTML='<span style=\'font-size:12px;font-weight:600;color:var(--ag);\'>HT</span>'"
+        >
+      </div>
+    </div>
+    <div class="expbody">
+      <p class="exprole">Data Engineer</p>
+      <p class="exporg">HabiTerre · Bellevue, WA</p>
+      <p class="expdet">Building QA/QC platform for carbon data pipelines. React/FastAPI full-stack, AWS S3/SNS infra, geospatial batch processing, DAO patterns at subfield granularity.</p>
+    </div>
+  </div>
+</div>
+
+<div class="sl"><span class="sln">04</span><span class="slt">education</span><div class="slhr"></div></div>
+<div class="edugrid">
+  <div class="educard">
+    <div class="edutop">
+      <div class="edulbox">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Dartmouth_College_logo.svg/512px-Dartmouth_College_logo.svg.png"
+          alt="Dartmouth College"
+          onerror="this.parentNode.innerHTML='<span style=\'font-size:11px;font-weight:600;color:var(--ap);\'>D</span>'"
+        >
+      </div>
+      <div>
+        <div class="eduschool">Dartmouth College</div>
+        <div class="eduloc">Hanover, NH · 2020 – 2022</div>
+      </div>
+    </div>
+    <div>
+      <div class="edudeg">MS · Quantitative Biomedical Sciences</div>
+      <div class="edufield">Health Data Science track — Bayesian modeling, causal inference, clinical data pipelines, epidemiological methods.</div>
+    </div>
+    <div class="tags"><span class="tag">Bayesian stats</span><span class="tag">causal inference</span><span class="tag">R</span><span class="tag">Python</span><span class="tag">Stan</span></div>
+  </div>
+  <div class="educard">
+    <div class="edutop">
+      <div class="edulbox">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/University_of_Maryland_logo.svg/320px-University_of_Maryland_logo.svg.png"
+          alt="University of Maryland"
+          onerror="this.parentNode.innerHTML='<span style=\'font-size:11px;font-weight:600;color:var(--ar);\'>UMD</span>'"
+        >
+      </div>
+      <div>
+        <div class="eduschool">University of Maryland</div>
+        <div class="eduloc">College Park, MD · 2016 – 2020</div>
+      </div>
+    </div>
+    <div>
+      <div class="edudeg">BS · Computer Science + Statistics minor</div>
+      <div class="edufield">Algorithms, systems programming, probabilistic inference, data structures, linear algebra, statistical theory.</div>
+    </div>
+    <div class="tags"><span class="tag">algorithms</span><span class="tag">statistics</span><span class="tag">Java</span><span class="tag">C</span><span class="tag">probability</span></div>
+  </div>
+</div>
+
+<footer class="footer">
+  <span class="footer-l">© 2025 Ayush Chakraborty · open to data scientist roles</span>
+  <div class="footer-r">
+    <a href="#">github</a><a href="#">linkedin</a><a href="#">resume</a><a href="#">email</a>
+  </div>
+</footer>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+let isDark=false,barChart,radarChart;
+function gc(){
+  return isDark
+    ?{g:'#39d353',b:'#58a6ff',p:'#bc8cff',a:'#d29922',grid:'rgba(255,255,255,0.07)',tick:'#484f58',rf:'rgba(88,166,255,0.12)',rb:'#58a6ff',pt:'#58a6ff'}
+    :{g:'#1a7f37',b:'#0969da',p:'#6e40c9',a:'#9a6700',grid:'rgba(0,0,0,0.08)',tick:'#9a9590',rf:'rgba(9,105,218,0.1)',rb:'#0969da',pt:'#0969da'};
+}
+function buildCharts(){
+  const c=gc(),f={family:'JetBrains Mono',size:10};
+  if(barChart)barChart.destroy();
+  if(radarChart)radarChart.destroy();
+  barChart=new Chart(document.getElementById('barChart'),{
+    type:'bar',
+    data:{labels:['data eng','ML modeling','backend dev','stats/math','frontend','cloud infra'],
+      datasets:[{data:[2200,1600,1400,1100,800,700],backgroundColor:[c.g,c.b,c.b,c.p,c.b,c.a],borderWidth:0}]},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>' '+ctx.parsed.y+'h'}}},
+      scales:{x:{grid:{color:c.grid},ticks:{color:c.tick,font:f}},y:{grid:{color:c.grid},ticks:{color:c.tick,font:f,callback:v=>v+'h'}}}}
+  });
+  radarChart=new Chart(document.getElementById('radarChart'),{
+    type:'radar',
+    data:{labels:['engineering','statistics','ML','health domain','systems','comms'],
+      datasets:[{data:[9,8,8,7,7,8],borderColor:c.rb,backgroundColor:c.rf,pointBackgroundColor:c.pt,borderWidth:1.5,pointRadius:3}]},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false}},
+      scales:{r:{grid:{color:c.grid},angleLines:{color:c.grid},ticks:{display:false,stepSize:2},pointLabels:{color:c.tick,font:f},min:0,max:10}}}
+  });
+}
+function toggleTheme(){
+  isDark=!isDark;
+  document.getElementById('pf').classList.toggle('dark',isDark);
+  document.getElementById('tlbl').textContent=isDark?'light':'dark';
+  buildCharts();
+}
+buildCharts();
+</script>
