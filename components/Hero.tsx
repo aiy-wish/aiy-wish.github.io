@@ -23,6 +23,7 @@ export default function Hero() {
           Building production ML systems, Bayesian models,<br />
           and pipelines that actually ship.
         </p>
+        
         <div className="hlinks">
           <a className="btn p" href="#">download .html ↗</a>
           <a className="btn" href="https://github.com/aiy-wish" target="_blank" rel="noopener noreferrer">github</a>

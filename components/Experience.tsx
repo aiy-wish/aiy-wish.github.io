@@ -7,12 +7,13 @@ interface LogoProps {
   alt: string
   fallback: string
   fallbackColor: string
+  url?: string
   className: string
 }
 
 function Logo({ src, alt, fallback, fallbackColor, className }: LogoProps) {
   const [errored, setErrored] = useState(false)
-  return (
+  const content = (
     <div className={className}>
       {!src || errored
         ? <span style={{ fontSize: 12, fontWeight: 600, color: fallbackColor }}>{fallback}</span>
@@ -20,6 +21,7 @@ function Logo({ src, alt, fallback, fallbackColor, className }: LogoProps) {
       }
     </div>
   )
+  return content
 }
 
 const experiences = [
@@ -27,6 +29,7 @@ const experiences = [
     date: 'Oct 2022 – present',
     logoSrc: '/logos/habiterre.png',
     logoAlt: 'HabiTerre',
+    logoUrl: 'https://www.habiterre.com',
     logoFallback: 'HT',
     logoFallbackColor: 'var(--ag)',
     role: 'Data Engineer',
@@ -35,17 +38,20 @@ const experiences = [
   },
   {
     date: 'Jun 2022 – Aug 2022',
+    logoSrc: '/logos/tcgdigital.png',
+    logoAlt: 'TCG Digital',
+    logoUrl: 'https://www.tcgdigital.com',
     logoFallback: 'TCG',
     logoFallbackColor: 'var(--ab)',
-    logoAlt: 'TCG Digital',
     role: 'Data Science Intern',
     org: 'TCG Digital',
     detail: 'Customer review text analytics for sentiment and emotion classification. Topic modelling on free-flow text (aspect extraction) and aspect-based sentiment analysis using transformer models.',
   },
   {
     date: 'Apr 2022 – Jun 2022',
-    logoSrc: '/logos/swissre.svg',
+    logoSrc: '/logos/swiss-re.png',
     logoAlt: 'Swiss Re',
+    logoUrl: 'https://www.swissre.com',
     logoFallback: 'SR',
     logoFallbackColor: 'var(--ab)',
     role: 'Data Science Student Consultant',
@@ -56,6 +62,7 @@ const experiences = [
     date: 'Mar 2022 – Jun 2022',
     logoSrc: '/logos/dartmouth.png',
     logoAlt: 'Dartmouth College',
+    logoUrl: 'https://www.dartmouth.edu',
     logoFallback: 'D',
     logoFallbackColor: 'var(--ap)',
     role: 'Machine Learning Teaching Assistant',
@@ -64,9 +71,11 @@ const experiences = [
   },
   {
     date: 'Jun 2019 – Aug 2019',
+    logoSrc: '/logos/flydubai.png',
+    logoAlt: 'flydubai',
+    logoUrl: 'https://www.flydubai.com',
     logoFallback: 'FZ',
     logoFallbackColor: 'var(--aa)',
-    logoAlt: 'flydubai',
     role: 'DevOps / BigData Intern',
     org: 'flydubai · Dubai, UAE',
     detail: 'Built statistical models for airline competitor analysis. Data ingestion with Cloudera/Apache Kafka. CI/CD pipelines with Azure, Git/Jenkins integration.',
@@ -80,13 +89,22 @@ export default function Experience() {
         <div key={exp.role + exp.org} className="exprow">
           <div className="expleft">
             <p className="expdate">{exp.date}</p>
-            <Logo
-              src={exp.logoSrc}
-              alt={exp.logoAlt}
-              fallback={exp.logoFallback}
-              fallbackColor={exp.logoFallbackColor}
-              className="logobox"
-            />
+              {exp.logoUrl
+                ? <a href={exp.logoUrl} target="_blank" rel="noopener noreferrer"><Logo
+                    src={exp.logoSrc}
+                    alt={exp.logoAlt}
+                    fallback={exp.logoFallback}
+                    fallbackColor={exp.logoFallbackColor}
+                    className="logobox"
+                  /></a>
+                : <Logo
+                    src={exp.logoSrc}
+                    alt={exp.logoAlt}
+                    fallback={exp.logoFallback}
+                    fallbackColor={exp.logoFallbackColor}
+                    className="logobox"
+                  />
+              }
           </div>
           <div className="expbody">
             <p className="exprole">{exp.role}</p>

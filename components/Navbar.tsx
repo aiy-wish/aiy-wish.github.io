@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { useTheme } from '@/lib/ThemeContext'
 
 export default function Navbar() {
@@ -14,7 +15,7 @@ export default function Navbar() {
       <div className="nav-right">
         <a href="#">work</a>
         <a href="#">research</a>
-        <a href="#">about</a>
+        <Link href="/about">about</Link>
         <button className="ttoggle" onClick={toggle}>
           <div className="ttrack">
             <div className="tthumb" />

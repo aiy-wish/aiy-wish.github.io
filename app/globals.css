@@ -110,7 +110,6 @@
 
 /* ── Experience ── */
 .exprow { display: grid; grid-template-columns: 200px 1fr; border-bottom: 1px solid var(--border); }
-.exprow:last-child { border-bottom: none; }
 .expleft { padding: 1.5rem 2rem; border-right: 1px solid var(--border); display: flex; flex-direction: column; gap: .75rem; align-items: flex-start; }
 .expdate { font-size: 11px; color: var(--dim); }
 .logobox { width: 52px; height: 52px; border-radius: 6px; border: 1px solid var(--border); background: var(--surface); display: flex; align-items: center; justify-content: center; overflow: hidden; padding: 6px; }
