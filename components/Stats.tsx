@@ -1,6 +1,6 @@
 const stats = [
   { num: '3', sup: '+', label: 'yrs production eng' },
-  { num: '2', sup: '',  label: 'graduate degrees' },
+  { num: '7', sup: '+', label: 'roles held' },
   { num: '4', sup: '+', label: 'shipped platforms' },
   { num: '∞', sup: '',  label: 'questions asked' },
 ]

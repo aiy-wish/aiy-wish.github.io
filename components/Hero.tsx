@@ -1,3 +1,5 @@
+import Terminal from './Terminal'
+
 const proficiencyBars = [
   { name: 'Python / ML',    pct: 95, color: 'var(--ag)' },
   { name: 'SQL / DBs',      pct: 90, color: 'var(--ag)' },
@@ -23,35 +25,14 @@ export default function Hero() {
         </p>
         <div className="hlinks">
           <a className="btn p" href="#">download .html ↗</a>
-          <a className="btn" href="#">github</a>
-          <a className="btn" href="#">linkedin</a>
-          <a className="btn" href="#">resume</a>
+          <a className="btn" href="https://github.com/aiy-wish" target="_blank" rel="noopener noreferrer">github</a>
+          <a className="btn" href="https://www.linkedin.com/in/ayush-chakraborty/" target="_blank" rel="noopener noreferrer">linkedin</a>
+          <a className="btn" href="mailto:ayushchakraborty2000@gmail.com">email</a>
         </div>
       </div>
 
       <div className="hero-r">
-        <div className="cb">
-          <div className="ctop">
-            <span className="cfn">ayush_profile.py</span>
-            <div className="cdots">
-              <div className="cdot" style={{ background: '#ff5f57' }} />
-              <div className="cdot" style={{ background: '#ffbd2e' }} />
-              <div className="cdot" style={{ background: '#28c840' }} />
-            </div>
-          </div>
-          <div className="cbody">
-            <div><span className="kw">class</span> <span className="fn">DataScientist</span><span className="op">:</span></div>
-            <div>&nbsp;&nbsp;<span className="kw">def</span> <span className="fn">__init__</span><span className="op">(</span><span className="nm">self</span><span className="op">):</span></div>
-            <div>&nbsp;&nbsp;&nbsp;&nbsp;<span className="nm">self</span><span className="op">.</span>name <span className="op">=</span> <span className="st">&quot;Ayush Chakraborty&quot;</span></div>
-            <div>&nbsp;&nbsp;&nbsp;&nbsp;<span className="nm">self</span><span className="op">.</span>stack <span className="op">= [</span><span className="st">&quot;Python&quot;</span><span className="op">,</span><span className="st">&quot;FastAPI&quot;</span><span className="op">,</span><span className="st">&quot;AWS&quot;</span><span className="op">]</span></div>
-            <div>&nbsp;&nbsp;&nbsp;&nbsp;<span className="nm">self</span><span className="op">.</span>focus <span className="op">= [</span><span className="st">&quot;ML&quot;</span><span className="op">,</span><span className="st">&quot;Bayes&quot;</span><span className="op">,</span><span className="st">&quot;health-tech&quot;</span><span className="op">]</span></div>
-            <div>&nbsp;&nbsp;&nbsp;&nbsp;<span className="nm">self</span><span className="op">.</span>next_move <span className="op">=</span> <span className="st">&quot;DS role → PhD&quot;</span></div>
-            <div>&nbsp;</div>
-            <div>&nbsp;&nbsp;<span className="kw">def</span> <span className="fn">value_prop</span><span className="op">(</span><span className="nm">self</span><span className="op">):</span></div>
-            <div>&nbsp;&nbsp;&nbsp;&nbsp;<span className="cm"># eng precision + science depth</span></div>
-            <div>&nbsp;&nbsp;&nbsp;&nbsp;<span className="kw">return</span> <span className="nm">self</span><span className="op">.</span>stack <span className="op">+</span> <span className="nm">self</span><span className="op">.</span>focus</div>
-          </div>
-        </div>
+        <Terminal />
 
         <div className="sb">
           <p className="sh">proficiency index</p>

@@ -15,7 +15,19 @@
       "Bash(curl -sL -o /Users/ayushc/work/portfolio/public/logos/dartmouth.png \"https://www.pngfind.com/pngs/m/337-3379340_dartmouth-college-dartmouth-university-logo-hd-png-download.png\" -A \"Mozilla/5.0\")",
       "Bash(/opt/homebrew/bin/node -e ':*)",
       "Bash(python3 -c \"from PIL import Image; print\\('PIL available'\\)\")",
-      "Bash(pip3 install:*)"
+      "Bash(pip3 install:*)",
+      "Bash(git commit -m ':*)",
+      "Bash(curl -sL -o /Users/ayushc/work/portfolio/public/logos/swissre.png \"https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Swiss_Re_2013_logo.svg/320px-Swiss_Re_2013_logo.svg.png\" -A \"Mozilla/5.0 \\(Macintosh\\)\")",
+      "Bash(curl -sL -o /Users/ayushc/work/portfolio/public/logos/flydubai.png \"https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Flydubai_logo.svg/320px-Flydubai_logo.svg.png\" -A \"Mozilla/5.0 \\(Macintosh\\)\")",
+      "Bash(curl -sL -o /Users/ayushc/work/portfolio/public/logos/tcg.png \"https://www.tcgdigital.com/wp-content/uploads/2023/01/TCG_Digital_Logo.png\" -A \"Mozilla/5.0 \\(Macintosh\\)\")",
+      "Bash(curl -sL -o /Users/ayushc/work/portfolio/public/logos/swissre.svg \"https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Swiss_Re_2013_logo.svg\" -A \"Mozilla/5.0\")",
+      "Bash(curl -sL -o /Users/ayushc/work/portfolio/public/logos/flydubai.svg \"https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Flydubai_logo.svg\" -A \"Mozilla/5.0\")",
+      "Bash(curl -sL -o /Users/ayushc/work/portfolio/public/logos/flydubai.png \"https://logo.clearbit.com/flydubai.com\" -A \"Mozilla/5.0\")",
+      "Bash(npm run:*)",
+      "Bash(gh auth:*)",
+      "Bash(git remote:*)",
+      "Bash(git add:*)",
+      "Bash(git rm:*)"
     ]
   }
 }

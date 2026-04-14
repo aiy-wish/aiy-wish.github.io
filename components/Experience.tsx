@@ -3,7 +3,7 @@
 import { useState } from 'react'
 
 interface LogoProps {
-  src: string
+  src?: string
   alt: string
   fallback: string
   fallbackColor: string
@@ -14,7 +14,7 @@ function Logo({ src, alt, fallback, fallbackColor, className }: LogoProps) {
   const [errored, setErrored] = useState(false)
   return (
     <div className={className}>
-      {errored
+      {!src || errored
         ? <span style={{ fontSize: 12, fontWeight: 600, color: fallbackColor }}>{fallback}</span>
         : <img src={src} alt={alt} onError={() => setErrored(true)} />
       }
@@ -32,6 +32,44 @@ const experiences = [
     role: 'Data Engineer',
     org: 'HabiTerre · Bellevue, WA',
     detail: 'Building QA/QC platform for carbon data pipelines. React/FastAPI full-stack, AWS S3/SNS infra, geospatial batch processing, DAO patterns at subfield granularity.',
+  },
+  {
+    date: 'Jun 2022 – Aug 2022',
+    logoFallback: 'TCG',
+    logoFallbackColor: 'var(--ab)',
+    logoAlt: 'TCG Digital',
+    role: 'Data Science Intern',
+    org: 'TCG Digital',
+    detail: 'Customer review text analytics for sentiment and emotion classification. Topic modelling on free-flow text (aspect extraction) and aspect-based sentiment analysis using transformer models.',
+  },
+  {
+    date: 'Apr 2022 – Jun 2022',
+    logoSrc: '/logos/swissre.svg',
+    logoAlt: 'Swiss Re',
+    logoFallback: 'SR',
+    logoFallbackColor: 'var(--ab)',
+    role: 'Data Science Student Consultant',
+    org: 'Swiss Re · Hanover, NH',
+    detail: 'Project sponsored by Swiss Re and Insured Connect for Dartmouth\'s Data Analytics Project Lab. Developed a mathematical model to identify underinsured policyholders and quantify adequate coverage.',
+  },
+  {
+    date: 'Mar 2022 – Jun 2022',
+    logoSrc: '/logos/dartmouth.png',
+    logoAlt: 'Dartmouth College',
+    logoFallback: 'D',
+    logoFallbackColor: 'var(--ap)',
+    role: 'Machine Learning Teaching Assistant',
+    org: 'Dartmouth College · Hanover, NH',
+    detail: 'Graduate TA for COSC274: Machine Learning and Statistical Data Analysis, taught by Prof. Soroush Vosoughi.',
+  },
+  {
+    date: 'Jun 2019 – Aug 2019',
+    logoFallback: 'FZ',
+    logoFallbackColor: 'var(--aa)',
+    logoAlt: 'flydubai',
+    role: 'DevOps / BigData Intern',
+    org: 'flydubai · Dubai, UAE',
+    detail: 'Built statistical models for airline competitor analysis. Data ingestion with Cloudera/Apache Kafka. CI/CD pipelines with Azure, Git/Jenkins integration.',
   },
 ]
 
